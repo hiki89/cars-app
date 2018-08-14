@@ -3,6 +3,7 @@
     <router-link class="navbar-brand" to="/cars">Cars app</router-link>
     <div class="navbar-nav">
       <router-link class="nav-item nav-link" to="/cars">Cars</router-link>
+      <router-link class="nav-item nav-link" to="/add">Add car</router-link>
     </div>
   </nav>
 </template>
