@@ -64,6 +64,11 @@
             <button name="submit" type="submit" class="btn btn-primary">Submit</button>
         </div>
         </div>
+        <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="reset" type="reset" class="btn btn-primary">Reset</button>
+        </div>
+        </div>
         
     </form>
     </div>
