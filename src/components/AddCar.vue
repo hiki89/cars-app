@@ -62,11 +62,8 @@
         <div class="form-group row">
         <div class="offset-4 col-8">
             <button name="submit" type="submit" class="btn btn-primary">Submit</button>
-        </div>
-        </div>
-        <div class="form-group row">
-        <div class="offset-4 col-8">
             <button name="reset" type="reset" class="btn btn-primary">Reset</button>
+            <button @click="preview" name="preview" type="button" class="btn btn-primary">Preview</button>
         </div>
         </div>
         
@@ -115,6 +112,16 @@ export default {
                 year.push(i);
             }
             return year;
+        },
+
+        preview() {
+            alert(`Brand: ${this.car.brand}
+Model: ${this.car.model}
+Year: ${this.car.year}
+Automatic: ${this.car.isAutomatic}
+Max speed: ${this.car.maxSpeed}
+Engine: ${this.car.engine}
+Number of doors: ${this.car.numberOfDoors}`)
         }
     }
 }
