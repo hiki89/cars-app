@@ -38,7 +38,7 @@
         <label for="maxSpeed" class="col-4 col-form-label">Max speed</label>
         <div class="col-8">
             <div class="input-group">
-            <input id="maxSpeed" name="maxSpeed" type="number" required="required" class="form-control here" v-model="car.maxSpeed">
+            <input id="maxSpeed" name="maxSpeed" type="number" class="form-control here" v-model="car.maxSpeed">
             </div>
         </div>
         </div>
@@ -92,7 +92,11 @@ export default {
 
     methods: {
         onSubmit() {
-            this.addCar()
+            if(this.car.brand.length || this.car.model.length < 2) {
+                alert("Brand and Model must have at least two letters.");
+            }else {
+                this.addCar()
+            }
         },
 
         addCar() {
@@ -122,7 +126,7 @@ Automatic: ${this.car.isAutomatic}
 Max speed: ${this.car.maxSpeed}
 Engine: ${this.car.engine}
 Number of doors: ${this.car.numberOfDoors}`)
-        }
+        },
     }
 }
 </script>
