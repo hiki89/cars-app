@@ -22,8 +22,12 @@ export default {
 
     methods: {
         deleteCar(id) {
-            cars.remove(id)
-            this.cars.splice(this.car, 1)
+            if(confirm("Are you sure?")) {
+                cars.remove(id)
+                this.cars.splice(this.car, 1)
+            } else {
+                 window.close()
+            }
         }
     }
 }
