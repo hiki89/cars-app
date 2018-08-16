@@ -90,10 +90,19 @@ export default {
         }
     },
 
+    created () {
+        this.$route.params.id && cars.get(this.$route.params.id)
+        .then((response) => {
+            this.car = response.data
+        })
+    },
+
     methods: {
         onSubmit() {
-            if(this.car.brand.length || this.car.model.length < 2) {
+            if(this.car.brand.length < 2 || this.car.model.length < 2) {
                 alert("Brand and Model must have at least two letters.");
+            }else if(this.car.id){
+                this.editCar()
             }else {
                 this.addCar()
             }
@@ -109,23 +118,35 @@ export default {
             })
         },
 
+        editCar() {
+            cars.editCar(this.car)
+            .then(response => {
+                this.$router.push('/cars')
+            })
+            .catch(response => {
+                console.log(response)
+            })
+        },
+
         years() {
             let year = []
             let i
-            for (i = 1900; i < 2019; i++) { 
+            for (i = 1990; i < 2019; i++) { 
                 year.push(i);
             }
             return year;
         },
 
         preview() {
-            alert(`Brand: ${this.car.brand}
-Model: ${this.car.model}
-Year: ${this.car.year}
-Automatic: ${this.car.isAutomatic}
-Max speed: ${this.car.maxSpeed}
-Engine: ${this.car.engine}
-Number of doors: ${this.car.numberOfDoors}`)
+            alert(`
+            Brand: ${this.car.brand}
+            Model: ${this.car.model}
+            Year: ${this.car.year}
+            Automatic: ${this.car.isAutomatic}
+            Max speed: ${this.car.maxSpeed}
+            Engine: ${this.car.engine}
+            Number of doors: ${this.car.numberOfDoors}
+                `)
         },
     }
 }
