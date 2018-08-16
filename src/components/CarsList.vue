@@ -9,7 +9,7 @@
             <li class="list-group-item">Engine: {{ car.engine }}</li>
             <li class="list-group-item">Number of doors: {{ car.numberOfDoors }}</li>
             <router-link :to="{name: 'edit', params: {id: car.id}}" class="btn btn-dark">Edit</router-link>
-            <button @click="deleteCar" class="btn btn-dark">Delete</button>
+            <button @click="deleteCar(car.id)" class="btn btn-dark">Delete</button>
         </ul>
     </div>
 </template>
@@ -21,9 +21,9 @@ export default {
     props: ['cars'],
 
     methods: {
-        deleteCar() {
-            let carIndex = this.cars.findIndex(c => c.id === car.id)
-            this.cars.remove(this.cars.id)
+        deleteCar(id) {
+            cars.remove(id)
+            this.cars.splice(this.car, 1)
         }
     }
 }
